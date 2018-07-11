@@ -120,10 +120,11 @@ install_bins() {
   fi
 
   # Download yarn if there is a yarn.lock file or if the user
-  # has specified a version of yarn under "engines". We'll still
-  # only install using yarn if there is a yarn.lock file
+  # has specified a version of yarn under "engines". We'll 
+  # assume it's yarn from here on out
   if $YARN || [ -n "$yarn_engine" ]; then
     install_yarn "$BUILD_DIR/.heroku/yarn" "$yarn_engine"
+    YARN=true
   fi
 
   if $YARN; then
